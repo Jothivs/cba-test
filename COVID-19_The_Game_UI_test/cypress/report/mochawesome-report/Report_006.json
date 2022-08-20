@@ -1,0 +1,185 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-20T08:22:51.290Z",
+    "end": "2022-08-20T08:23:06.452Z",
+    "duration": 15162,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "69c909dc-ec30-4f53-bab9-26c432188fc9",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Login.cy.js",
+      "file": "cypress\\e2e\\Login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1d43a700-feec-4c82-9b84-f58a9eb45aac",
+          "title": "User login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User should not be able to login if username and password fields are left blank",
+              "fullTitle": "User login User should not be able to login if username and password fields are left blank",
+              "timedOut": null,
+              "duration": 2697,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Check whether User Name & Password fields are empty\ncy.get('#worrior_username').should('be.empty');\ncy.get('#worrior_pwd').should('be.empty'); // Check whether a validation message is displayed\ncy.get('#login_popup').should('not.be.visible'); // Click on \"Login Warrior\" button\ncy.get('#warrior').contains('Login warrior').click(); // Check the validation message\ncy.get('#login_popup').should('be.visible').and('have.text', 'Wrong username or password').and('have.css', 'background-color', 'rgb(255, 0, 0)');",
+              "err": {},
+              "uuid": "2d2286c1-5aae-4dd8-b795-bff614211b08",
+              "parentUUID": "1d43a700-feec-4c82-9b84-f58a9eb45aac",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User should not be able to login if username field is left blank",
+              "fullTitle": "User login User should not be able to login if username field is left blank",
+              "timedOut": null,
+              "duration": 1334,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Enter User Name\ncy.get('#worrior_username').type('abc'); // Check whether Password field is empty\ncy.get('#worrior_pwd').should('be.empty'); // Check whether a validation message is displayed\ncy.get('#login_popup').should('not.be.visible'); // Click on \"Login Warrior\" button\ncy.get('#warrior').contains('Login warrior').click(); // Check the validation message\ncy.get('#login_popup').should('be.visible').and('have.text', 'Wrong username or password').and('have.css', 'background-color', 'rgb(255, 0, 0)');",
+              "err": {},
+              "uuid": "0e22b2c8-94cc-499a-a406-5186132fbc00",
+              "parentUUID": "1d43a700-feec-4c82-9b84-f58a9eb45aac",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User should not be able to login if password field is left blank",
+              "fullTitle": "User login User should not be able to login if password field is left blank",
+              "timedOut": null,
+              "duration": 1317,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#worrior_username').should('be.empty');\ncy.get('#worrior_pwd').type('abc');\ncy.get('#login_popup').should('not.be.visible');\ncy.get('#warrior').contains('Login warrior').click();\ncy.get('#login_popup').should('be.visible').and('have.text', 'Wrong username or password').and('have.css', 'background-color', 'rgb(255, 0, 0)');",
+              "err": {},
+              "uuid": "4506cc0e-f971-4f83-a303-93d96ec5d5ba",
+              "parentUUID": "1d43a700-feec-4c82-9b84-f58a9eb45aac",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User should not be able to login if incorrect details are provided for username & password fields",
+              "fullTitle": "User login User should not be able to login if incorrect details are provided for username & password fields",
+              "timedOut": null,
+              "duration": 3117,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#worrior_username').type('zzz');\ncy.get('#worrior_pwd').type('zzz');\ncy.get('#login_popup').should('not.be.visible');\ncy.get('#warrior').contains('Login warrior').click();\ncy.get('#login_popup').should('be.visible').and('have.text', 'Wrong username or password').and('have.css', 'background-color', 'rgb(255, 0, 0)');",
+              "err": {},
+              "uuid": "68fa636b-79b6-40f8-8073-f0d645f52d47",
+              "parentUUID": "1d43a700-feec-4c82-9b84-f58a9eb45aac",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User should be able to login if correct details are provided for username & password fields",
+              "fullTitle": "User login User should be able to login if correct details are provided for username & password fields",
+              "timedOut": null,
+              "duration": 6629,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.userLoginSuccessAndGameEntrySuccess('New user');",
+              "err": {},
+              "uuid": "1ab6ee41-1a6f-44c1-83a2-bb88d8b4a2ee",
+              "parentUUID": "1d43a700-feec-4c82-9b84-f58a9eb45aac",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2d2286c1-5aae-4dd8-b795-bff614211b08",
+            "0e22b2c8-94cc-499a-a406-5186132fbc00",
+            "4506cc0e-f971-4f83-a303-93d96ec5d5ba",
+            "68fa636b-79b6-40f8-8073-f0d645f52d47",
+            "1ab6ee41-1a6f-44c1-83a2-bb88d8b4a2ee"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 15094,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "Report",
+        "overwrite": false,
+        "embeddedScreenshots": true,
+        "charts": true,
+        "html": true,
+        "json": true,
+        "reportPageTitle": "HTML Report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-20T08:23:11.374Z",
+    "end": "2022-08-20T08:23:22.346Z",
+    "duration": 10972,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "940ea64d-31a7-4743-bec7-15d187a336a0",
+      "title": "",
+      "fullFile": "cypress\\e2e\\GameEntryPage.cy.js",
+      "file": "cypress\\e2e\\GameEntryPage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8ecd0786-269a-4477-a18b-cfb4047e29ff",
+          "title": "Game Entry Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully logged in user should be able to reach Game Entry page and proceed to Battle Field",
+              "fullTitle": "Game Entry Page Successfully logged in user should be able to reach Game Entry page and proceed to Battle Field",
+              "timedOut": null,
+              "duration": 10911,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Do a successful user login. This function is defined in support/command.js file\ncy.userLoginSuccessAndGameEntrySuccess('New user'); // Game Entry\ncy.enterBattleField(); // Check if \"No second chances\" pop-up is displayed.\ncy.get('#introModal > .modal-dialog').should('be.visible');\ncy.get('#introModal > .modal-dialog > .modal-content > .modal-header > #staticBackdropLabel').should('be.visible').and('includes.text', 'No second ');",
+              "err": {},
+              "uuid": "aff93792-d2b2-45bd-ad89-4520bdec8521",
+              "parentUUID": "8ecd0786-269a-4477-a18b-cfb4047e29ff",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "aff93792-d2b2-45bd-ad89-4520bdec8521"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 10911,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "Report",
+        "overwrite": false,
+        "embeddedScreenshots": true,
+        "charts": true,
+        "html": true,
+        "json": true,
+        "reportPageTitle": "HTML Report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

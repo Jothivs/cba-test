@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-20T08:22:02.187Z",
+    "end": "2022-08-20T08:22:10.933Z",
+    "duration": 8746,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b6be6553-a4cf-4941-8a16-563232f07edb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\GameEntryComponent.cy.js",
+      "file": "cypress\\e2e\\GameEntryComponent.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2c40a79b-cb45-4e44-b4de-f4fb693f9177",
+          "title": "Game Entry Component",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User should be able to access Game Entry page and its features",
+              "fullTitle": "Game Entry Component User should be able to access Game Entry page and its features",
+              "timedOut": null,
+              "duration": 8606,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Do a successful user login. This function is defined in support/command.js file\ncy.userLoginSuccessAndGameEntrySuccess('New user'); // URL should be as expected\ncy.url().should('include', '/covid'); // Heading should be visible\ncy.get('.alpha-heading').should('be.visible'); // Coronavirus image should be visible\ncy.get('#world_img').should('be.visible'); // Welcome text should be displayed.\ncy.get('#welcome_text').should('be.visible').and('includes.text', 'Welcome '); // 'Enter at your own risk?' button should be visible\ncy.get('#news').should('be.visible').and('have.text', 'Enter at your own risk?'); // Footer text should be visible\ncy.get('.footer-text').should('be.visible'); // Number of footer moving messages should be 7.\ncy.get('.ticker-move').children().should('have.length', 7); // Check the text of all the messages\ncy.get('.ticker-move > :nth-child(1)').should('contain.text', \"Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.\");\ncy.get('.ticker-move > :nth-child(2)').should('contain.text', \"Maintain at least 1 metre (3 feet) distance between yourself and others.\");\ncy.get('.ticker-move > :nth-child(3)').should('contain.text', \"Avoid going to crowded places.\");\ncy.get('.ticker-move > :nth-child(4)').should('contain.text', \"Avoid touching eyes, nose and mouth.\");\ncy.get('.ticker-move > :nth-child(5)').should('contain.text', \"Stay home and self-isolate even with minor symptoms such as cough, headache, mild fever, until you recover.\");\ncy.get('.ticker-move > :nth-child(6)').should('contain.text', \"Keep up to date on the latest information from trusted sources.\");\ncy.get('.ticker-move > :nth-child(7)').should('contain.text', \"Visit WHO.int for more information.\");",
+              "err": {},
+              "uuid": "dddd7514-3275-43aa-85cb-fa8801617751",
+              "parentUUID": "2c40a79b-cb45-4e44-b4de-f4fb693f9177",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "dddd7514-3275-43aa-85cb-fa8801617751"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8606,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "Report",
+        "overwrite": false,
+        "embeddedScreenshots": true,
+        "charts": true,
+        "html": true,
+        "json": true,
+        "reportPageTitle": "HTML Report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

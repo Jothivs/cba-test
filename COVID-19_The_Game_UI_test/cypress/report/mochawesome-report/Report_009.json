@@ -1,0 +1,128 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-20T08:24:44.617Z",
+    "end": "2022-08-20T08:25:07.730Z",
+    "duration": 23113,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d88976c7-16ae-456d-8ad3-9bbd27a16166",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Regression.cy.js",
+      "file": "cypress\\e2e\\Regression.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "563a1f0b-d958-452f-91f7-4a7838b10b02",
+          "title": "Regression scenarios asked by the recruiter",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Player should be able to sign up, login, complete some questions and view the leaderboard",
+              "fullTitle": "Regression scenarios asked by the recruiter Player should be able to sign up, login, complete some questions and view the leaderboard",
+              "timedOut": null,
+              "duration": 13954,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Do a successful user login. This function is defined in support/command.js file\nlet newPlayerName;\ncy.userLoginSuccessAndGameEntrySuccess('New user').then($name => {\n  newPlayerName = $name;\n  cy.task('set', newPlayerName);\n}); // Game Entry\ncy.enterBattleField(); // In \"No second chances\" popup, click Start\ncy.get('#start').should('not.be.disabled').and('have.text', 'Start').click(); // No second chances popup should close. Check for \"The Beginning\" header\ncy.get('#h3_battlefield').should('be.visible').and('have.text', \"The Beginning\"); // URL should be as expected\ncy.url().should('include', '/news'); // Check for the map\ncy.get('nav').should('be.visible'); // Check for the article\ncy.get('article > div.modal-body').should('be.visible'); // Get the question & answer file from fixtures folder\ncy.fixture(\"Question&Answers.json\"); // Answer question\ncy.get('#question').then($btn1 => {\n  if ($btn1.text().includes(_QuestionAnswers.default[0].question)) {\n    cy.get('#answer_1').then($btn2 => {\n      if ($btn2.text().includes(_QuestionAnswers.default[0].correctAnswer[0])) {\n        cy.get('#answer_1').contains(_QuestionAnswers.default[0].correctAnswer[0]).should('not.be.disabled').click();\n      } else {\n        cy.get('#answer_2').click();\n      }\n    });\n  }\n});\ncy.get('#img-wfh').should('be.visible');\ncy.get('#correctModal > .modal-dialog > .modal-content > .modal-header > #staticBackdropLabel').should('be.visible').and('have.text', \"That is correct!\");\ncy.get('#correctModal > .modal-dialog > .modal-content > .modal-body').should('be.visible').and('includes.text', '\\n        Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and work if possible. For more information about working from home visit Safe Work Australia .\\n      ');\ncy.get('#continue').should('not.be.disabled').and('have.text', 'Continue...').click({\n  force: true\n}); // View leaderboard\ncy.visit('https://responsivefight.herokuapp.com/leaderboard');\ncy.get(':nth-child(1) > .col-lg-12 > .option-label').should('be.visible').and('have.text', 'COVID-19 THE GAME - LEADERBOARD'); // View the username & corresponding score of the player\ncy.task('get').then(newPlayerName => {\n  cy.get('tbody').contains(\"username\").next().contains(\"score\");\n  cy.get('tbody').contains(newPlayerName).next().contains(1);\n});",
+              "err": {},
+              "uuid": "9d2bb3e5-9318-491c-8fa8-f8b37805a97c",
+              "parentUUID": "563a1f0b-d958-452f-91f7-4a7838b10b02",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Player should not be able to continue with the battle & should be allowed to retry,if wrong answer is answered",
+              "fullTitle": "Regression scenarios asked by the recruiter Player should not be able to continue with the battle & should be allowed to retry,if wrong answer is answered",
+              "timedOut": null,
+              "duration": 9075,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Do a successful user login. This function is defined in support/command.js file\ncy.userLoginSuccessAndGameEntrySuccess('New user'); // Game Entry\ncy.enterBattleField(); // In \"No second chances\" popup, click Start\ncy.get('#start').should('not.be.disabled').and('have.text', 'Start').click(); // No second chances popup should close. Check for \"The Beginning\" header\ncy.get('#h3_battlefield').should('be.visible').and('have.text', \"The Beginning\"); // URL should be as expected\ncy.url().should('include', '/news'); // Check for the map\ncy.get('nav').should('be.visible'); // Check for the article\ncy.get('article > div.modal-body').should('be.visible'); // Get the question & answer file from fixtures folder\ncy.fixture(\"Question&Answers.json\");\ncy.wait(500); // Answer question\ncy.get('#question').then($btn1 => {\n  if ($btn1.text().includes(_QuestionAnswers.default[0].question)) {\n    cy.get('#answer_1').then($btn2 => {\n      if ($btn2.text().includes(_QuestionAnswers.default[0].wrongAnswer)) {\n        cy.get('#answer_1').contains(_QuestionAnswers.default[0].wrongAnswer).should('not.be.disabled').click();\n      } else {\n        cy.get('#answer_2').click();\n      }\n    });\n  }\n});\ncy.get('#incorrectModal > .modal-dialog > .modal-content > .modal-header').should('be.visible');\ncy.get('#incorrectModal > .modal-dialog > .modal-content > .modal-header > #staticBackdropLabel').should('be.visible').and('have.text', 'Oh no!');\ncy.get('#incorrectModal > .modal-dialog > .modal-content > .modal-body').should('be.visible');\ncy.get('#close_modal_btn_2').should('be.visible').and('have.text', 'Go home and start again').click();\ncy.get('.option-label').should('be.visible');",
+              "err": {},
+              "uuid": "8a0a5efe-5764-4bad-a7f8-817f906e702d",
+              "parentUUID": "563a1f0b-d958-452f-91f7-4a7838b10b02",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9d2bb3e5-9318-491c-8fa8-f8b37805a97c",
+            "8a0a5efe-5764-4bad-a7f8-817f906e702d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 23029,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "Report",
+        "overwrite": false,
+        "embeddedScreenshots": true,
+        "charts": true,
+        "html": true,
+        "json": true,
+        "reportPageTitle": "HTML Report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

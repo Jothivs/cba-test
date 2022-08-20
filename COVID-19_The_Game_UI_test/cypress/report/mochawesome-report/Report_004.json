@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-20T08:22:15.543Z",
+    "end": "2022-08-20T08:22:27.075Z",
+    "duration": 11532,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5aa87684-ad93-4d7d-97d6-e1a44809a4da",
+      "title": "",
+      "fullFile": "cypress\\e2e\\BattleFieldComponent.cy.js",
+      "file": "cypress\\e2e\\BattleFieldComponent.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "82e6fe03-c486-4d70-8054-c3fc073eecae",
+          "title": "Battle field: The Beginning",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "New Player should be able to access Battle field page and its features",
+              "fullTitle": "Battle field: The Beginning New Player should be able to access Battle field page and its features",
+              "timedOut": null,
+              "duration": 11472,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Do a successful user login. This function is defined in support/command.js file\ncy.userLoginSuccessAndGameEntrySuccess('New user'); // Game Entry\ncy.enterBattleField(); // Check if \"No second chances\" pop-up is displayed and its features are visible\ncy.get('#introModal > .modal-dialog').should('be.visible');\ncy.get('.center').should('be.visible');\ncy.get('#introModal > .modal-dialog > .modal-content > .modal-header > #staticBackdropLabel').should('be.visible').and('have.text', 'No second chances!');\ncy.get('#introModal > .modal-dialog > .modal-content > .modal-body').should('be.visible').and('includes.text', 'In this battlefield if you give the wrong answer you will lose all accumulated points and start from the beginning.');\ncy.get('#start').should('not.be.disabled').and('have.text', 'Start');\ncy.get('.close').should('not.be.disabled').click(); // \"No second chances\" pop-up should not be seen.\ncy.get('#introModal > .modal-dialog').should('be.visible'); // Check for \"The Beginning\" header\ncy.get('#h3_battlefield').should('be.visible').and('have.text', \"The Beginning\"); // URL should be as expected\ncy.url().should('include', '/news'); // Check for the map\ncy.get('nav').should('be.visible'); // Check for the article\ncy.get('article > div.modal-body').should('be.visible');",
+              "err": {},
+              "uuid": "a2dacbcf-b41b-406f-851e-e0c603afec8f",
+              "parentUUID": "82e6fe03-c486-4d70-8054-c3fc073eecae",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a2dacbcf-b41b-406f-851e-e0c603afec8f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11472,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "Report",
+        "overwrite": false,
+        "embeddedScreenshots": true,
+        "charts": true,
+        "html": true,
+        "json": true,
+        "reportPageTitle": "HTML Report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

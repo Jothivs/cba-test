@@ -1,0 +1,185 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-20T08:22:31.825Z",
+    "end": "2022-08-20T08:22:46.351Z",
+    "duration": 14526,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b3566b44-061d-47fa-a62b-cd2905b40ffb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\SignUpPage.cy.js",
+      "file": "cypress\\e2e\\SignUpPage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f3bfbcf3-1a0f-4a69-b63d-9e4f045e96a3",
+          "title": "User Sign Up",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Negative scenario: User should not be allowed to create a user account, if all the fields in Sign Up page are filled with a space",
+              "fullTitle": "User Sign Up Negative scenario: User should not be allowed to create a user account, if all the fields in Sign Up page are filled with a space",
+              "timedOut": null,
+              "duration": 4212,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Type in values for the fields\ncy.get('#uname').type(user.userName);\ncy.get('#pwd').type(user.password);\ncy.get('#psw-repeat').type(user.repeatPassword); // Check whether a validation message is displayed\ncy.get('#popup').should('not.be.visible'); // Click on \"Sign Up\" button\ncy.get('#signupbtn').click(); // Check the validation message\ncy.get('#popup').should('be.visible').and('have.text', user.validationMessage);",
+              "err": {},
+              "uuid": "9ff3ff71-126c-47b7-90a3-f4463737f485",
+              "parentUUID": "f3bfbcf3-1a0f-4a69-b63d-9e4f045e96a3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative scenario: User should not be allowed to create a user account, if only Password field in Sign Up page is filled with a value",
+              "fullTitle": "User Sign Up Negative scenario: User should not be allowed to create a user account, if only Password field in Sign Up page is filled with a value",
+              "timedOut": null,
+              "duration": 1412,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Type in values for the fields\ncy.get('#uname').type(user.userName);\ncy.get('#pwd').type(user.password);\ncy.get('#psw-repeat').type(user.repeatPassword); // Check whether a validation message is displayed\ncy.get('#popup').should('not.be.visible'); // Click on \"Sign Up\" button\ncy.get('#signupbtn').click(); // Check the validation message\ncy.get('#popup').should('be.visible').and('have.text', user.validationMessage);",
+              "err": {},
+              "uuid": "03ac89be-82b8-4f9d-80da-b9def6e632b8",
+              "parentUUID": "f3bfbcf3-1a0f-4a69-b63d-9e4f045e96a3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative scenario: User should not be allowed to create a user account, if only Repeat Password field in Sign Up page is filled with a value",
+              "fullTitle": "User Sign Up Negative scenario: User should not be allowed to create a user account, if only Repeat Password field in Sign Up page is filled with a value",
+              "timedOut": null,
+              "duration": 1425,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Type in values for the fields\ncy.get('#uname').type(user.userName);\ncy.get('#pwd').type(user.password);\ncy.get('#psw-repeat').type(user.repeatPassword); // Check whether a validation message is displayed\ncy.get('#popup').should('not.be.visible'); // Click on \"Sign Up\" button\ncy.get('#signupbtn').click(); // Check the validation message\ncy.get('#popup').should('be.visible').and('have.text', user.validationMessage);",
+              "err": {},
+              "uuid": "45c64147-f1e6-464e-98fd-c16da7d544d9",
+              "parentUUID": "f3bfbcf3-1a0f-4a69-b63d-9e4f045e96a3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative scenario: User should not be allowed to create a user account, if an existing user name is entered for User Name field with a different password in Sign Up page is filled",
+              "fullTitle": "User Sign Up Negative scenario: User should not be allowed to create a user account, if an existing user name is entered for User Name field with a different password in Sign Up page is filled",
+              "timedOut": null,
+              "duration": 3177,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Type in values for the fields\ncy.get('#uname').type(user.userName);\ncy.get('#pwd').type(user.password);\ncy.get('#psw-repeat').type(user.repeatPassword); // Check whether a validation message is displayed\ncy.get('#popup').should('not.be.visible'); // Click on \"Sign Up\" button\ncy.get('#signupbtn').click(); // Check the validation message\ncy.get('#popup').should('be.visible').and('have.text', user.validationMessage);",
+              "err": {},
+              "uuid": "bafdaf9c-f563-47b0-8257-7ac00d68e02c",
+              "parentUUID": "f3bfbcf3-1a0f-4a69-b63d-9e4f045e96a3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Positive scenario: User should be allowed to create a user account, if all the fields are filled in Sign Up page",
+              "fullTitle": "User Sign Up Positive scenario: User should be allowed to create a user account, if all the fields are filled in Sign Up page",
+              "timedOut": null,
+              "duration": 4215,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.randomUserAccountcreation();",
+              "err": {},
+              "uuid": "3947d72d-7433-4a0c-be99-a221d40daf60",
+              "parentUUID": "f3bfbcf3-1a0f-4a69-b63d-9e4f045e96a3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9ff3ff71-126c-47b7-90a3-f4463737f485",
+            "03ac89be-82b8-4f9d-80da-b9def6e632b8",
+            "45c64147-f1e6-464e-98fd-c16da7d544d9",
+            "bafdaf9c-f563-47b0-8257-7ac00d68e02c",
+            "3947d72d-7433-4a0c-be99-a221d40daf60"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14441,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "Report",
+        "overwrite": false,
+        "embeddedScreenshots": true,
+        "charts": true,
+        "html": true,
+        "json": true,
+        "reportPageTitle": "HTML Report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

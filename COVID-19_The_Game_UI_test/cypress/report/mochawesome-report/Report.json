@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-20T08:21:40.232Z",
+    "end": "2022-08-20T08:21:44.284Z",
+    "duration": 4052,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cc95f461-b19e-4662-9ba2-0208285b7495",
+      "title": "",
+      "fullFile": "cypress\\e2e\\HomePageComponent.cy.js",
+      "file": "cypress\\e2e\\HomePageComponent.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ad350bec-0d87-4533-ae71-a3ef68519e4e",
+          "title": "COVID-19 The Game Home Page component",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User should be able to view the home page and access its elements",
+              "fullTitle": "COVID-19 The Game Home Page component User should be able to view the home page and access its elements",
+              "timedOut": null,
+              "duration": 3979,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Get the base url from cypress.config.js file\ncy.visit(Cypress.config().baseUrl);\ncy.get('.option-label > :nth-child(1)').should('be.visible');\ncy.get('.option-label > :nth-child(2)').should('be.visible');\ncy.get('.option-label').should('contain.text', \"COVID-19 THE GAME\");\ncy.get(':nth-child(3) > .col-sm-12 > .block').should('be.visible');\ncy.get(':nth-child(3) > .col-sm-12 > .block > p').should('have.text', 'The world has been taken over by super villain COVID19 and we need our super heroes to come to the rescue.\\nWe need to combat this great threat, so I am looking to recruit a team of Super Heroes and build the CURE team.\\nI am in search of heroes like The HandWasher, Invisible Distance, SOAP, WFH, and any other great warriors against COVID19, until CURE arrives to the rescue.');\ncy.get('.centered').should('be.visible');\ncy.get('#rego').should('not.be.disabled').and('have.text', ' Register').and('have.css', 'background-color', 'rgb(129, 165, 219)');\ncy.get('#login').should('not.be.disabled').and('have.text', ' Login').and('have.css', 'background-color', 'rgb(17, 165, 219)');\ncy.get('.summary').should('have.text', 'Please visit this project for more information');",
+              "err": {},
+              "uuid": "0352ad2f-9f10-4f21-9cdb-81a0d4933211",
+              "parentUUID": "ad350bec-0d87-4533-ae71-a3ef68519e4e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0352ad2f-9f10-4f21-9cdb-81a0d4933211"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3979,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "Report",
+        "overwrite": false,
+        "embeddedScreenshots": true,
+        "charts": true,
+        "html": true,
+        "json": true,
+        "reportPageTitle": "HTML Report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
