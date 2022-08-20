@@ -1,0 +1,1680 @@
+{
+	"info": {
+		"_postman_id": "a3ba7949-b2f7-4c8b-a10f-271404ce9fc0",
+		"name": "cba-api-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18292867"
+	},
+	"item": [
+		{
+			"name": "Generate token: Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//var jsonData = JSON.parse(responseBody);\r",
+							"//pm.environment.set(\"token\", jsonData.token);\r",
+							"\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"// Test status code\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"        pm.expect(jsonData.emailTo).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"\r",
+							"pm.test(\"Body matches email address to which token was sent\", function () {\r",
+							"    let value = pm.environment.get(\"email\");\r",
+							"    pm.expect(jsonData.emailTo).to.include(value);\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"\r",
+							"pm.test(\"Body has email property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"emailTo\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let keyValue = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+							"pm.environment.set(\"key\", `${keyValue}`)\r",
+							"\r",
+							"let emailValue = keyValue;\r",
+							"pm.environment.set(\"email\", `${emailValue}_${Date.now()}@yopmail.com`)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"key\": \"{{key}}\",\r\n  \"email\": \"{{email}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/gentoken",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"gentoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify token: Status 403",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 403\", function() {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"// Test data type of the response\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"        pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error).to.include(\"Token Authentication failed\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/verifytoken",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"verifytoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify token: Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/verifytoken",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"verifytoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate token: Status 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 400\", function() {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error).to.include(\"error: duplicate key value violates unique constraint\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Bad Request\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"key\": \"crazyFrog\",\r\n  \"email\": \"crazyFrog@yopmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/gentoken",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"gentoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User auth login: Status 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 400\", function() {\r",
+							"    pm.response.to.have.status(400); \r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error).to.include(\"Username or Password is incorrect\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Bad Request\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", `w`);\r",
+							"pm.environment.set(\"password\", `a`);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{password}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/user/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User auth login: Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// store the access token as an environment variable\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"InternalAPIAccesstoken\", jsonData.token)\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"        pm.expect(jsonData.token).to.be.a(\"string\");\r",
+							"        pm.expect(jsonData.expiresIn).to.be.a(\"string\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"\r",
+							"pm.test(\"Body matches token value\", function () {     \r",
+							"    pm.expect(jsonData.token).to.include(\"ey\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"\r",
+							"pm.test(\"Body has token & expiresIn property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"token\");\r",
+							"    pm.expect(jsonData).to.have.property(\"expiresIn\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", `aaaaaaaaaa`);\r",
+							"pm.environment.set(\"password\", `12345`);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{password}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/user/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user leaderboard Add user Status 201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 201\", function() {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"        pm.expect(jsonData.status).to.be.a(\"string\");\r",
+							"        pm.expect(jsonData.message).to.be.a(\"string\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"\r",
+							"pm.test(\"Body matches status and message values\", function () {     \r",
+							"    pm.expect(jsonData.status).to.include(\"success\");\r",
+							"    pm.expect(jsonData.message).to.include(\"User added.\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"\r",
+							"pm.test(\"Body has email property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"status\");\r",
+							"    pm.expect(jsonData).to.have.property(\"message\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let userName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+							"pm.environment.set(\"username\", `${userName}`)\r",
+							"\r",
+							"pm.environment.set(\"score\", `2500`);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"score\": \"{{score}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by name Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"if(jsonData & jsonData.length > 0)\r",
+							"{\r",
+							"    pm.test(\"verify username and score property and their data types\", function () {      \r",
+							"        pm.expect(jsonData).to.have.property(\"username\");\r",
+							"        pm.expect(jsonData).to.have.property(\"score\");\r",
+							"        pm.expect(jsonData.username).to.be.a(\"string\");\r",
+							"        pm.expect(jsonData.score).to.be.a(\"number\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"username sent in request matches with the username received\", function () {\r",
+							"    let value = pm.environment.get(\"username\");\r",
+							"    pm.expect(jsonData.username).to.include(value);\r",
+							"});\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", \"aaaaaaaaaa\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{InternalAPIAccesstoken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user/{{username}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"{{username}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by name Status 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// No way of trigerring 400 bad request with an error property in response body. Hence initiating a 403.\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 403\", function() {\r",
+							"    pm.response.to.have.status(403); \r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error).to.include(\"Token Authentication failed\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", \"aaaaaaaaaa\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{InternalAPIAccesstoken}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user/{{username}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"{{username}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user leaderboard Update user Status 204",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 204\", function() {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 40000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", \"aaaaaaaaaa\")\r",
+							"pm.environment.set(\"score\", \"3000\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"score\": \"{{score}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user Status 401",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Note: Valid delete-key was not provided.Hence, getting a 401.\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 401\", function() {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error).to.include(\"unable to authenticate key\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Unauthorized\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "delete-key",
+						"value": "57069",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{InternalAPIAccesstoken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user with more than 4000 points Status 201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 201\", function() {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"        pm.expect(jsonData.status).to.be.a(\"string\");\r",
+							"        pm.expect(jsonData.message).to.be.a(\"string\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"\r",
+							"pm.test(\"Body matches status and message values\", function () {     \r",
+							"    pm.expect(jsonData.status).to.include(\"success\");\r",
+							"    pm.expect(jsonData.message).to.include(\"added with updated score\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"\r",
+							"pm.test(\"Body has email property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"status\");\r",
+							"    pm.expect(jsonData).to.have.property(\"message\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let userName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+							"pm.environment.set(\"username\", `${userName}`)\r",
+							"pm.environment.set(\"score\", \"9000\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"score\": \"{{score}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user leaderboard Update user Status 403",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// No possible chance of getting a 400. So, initiating a 403.\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 403\", function() {\r",
+							"    pm.response.to.have.status(403); \r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error).to.include(\"Token Authentication failed\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", \"aaaaaaaaaa\")\r",
+							"pm.environment.set(\"score\", \"3000\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"score\": \"{{score}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user leaderboard Add user Status 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 400\", function() {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error).to.include(\"error: duplicate key value violates unique constraint\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Bad Request\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", \"aaaaaaaaaa\")\r",
+							"\r",
+							"pm.environment.set(\"score\", `2500`);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"score\": \"{{score}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user: Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"if(jsonData & jsonData.length > 0)\r",
+							"{\r",
+							"    pm.test(\"verify username and score property and their data types\", function () {      \r",
+							"        pm.expect(jsonData).to.have.property(\"username\");\r",
+							"        pm.expect(jsonData).to.have.property(\"score\");\r",
+							"        pm.expect(jsonData.username).to.be.a(\"string\");\r",
+							"        pm.expect(jsonData.score).to.be.a(\"number\");\r",
+							"    });\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user: Status 403",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// No possible chance of getting a 400. So, initiating a 403.\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 403\", function() {\r",
+							"    pm.response.to.have.status(403); \r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error).to.include(\"Token Authentication failed\");\r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user: Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let userName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+							"pm.environment.set(\"ReuseUsername\", `${userName}`)\r",
+							"\r",
+							"let passWord = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+							"pm.environment.set(\"ReusePassword\", `${passWord}`)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{ReuseUsername}}\",\r\n  \"password\": \"{{ReusePassword}}\"\r\n  }"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/user/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user: Status 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Tests\r",
+							"// Test status code\r",
+							"pm.test(\"Status code is 400\", function() {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Test data type of the response\r",
+							"\r",
+							"pm.test(\"Data type of the response\", function() {\r",
+							"   pm.expect(jsonData.error.name).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.length).to.be.a(\"number\");\r",
+							"   pm.expect(jsonData.error.severity).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.code).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.detail).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.schema).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.table).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.constraint).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.file).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.line).to.be.a(\"string\");\r",
+							"   pm.expect(jsonData.error.routine).to.be.a(\"string\");\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"// Test property value of the response\r",
+							"pm.test(\"Body matches error string\", function () {\r",
+							"    pm.expect(jsonData.error.name).to.include(\"error\");\r",
+							"    pm.expect(jsonData.error.severity).to.include(\"ERROR\");\r",
+							"    pm.expect(jsonData.error.code).to.include(\"23505\");\r",
+							"\r",
+							"    let user = pm.environment.get(\"username\");\r",
+							"    let pass = pm.environment.get(\"password\");\r",
+							"    pm.expect(jsonData.error.detail).to.include(\"already exists\");\r",
+							"    pm.expect(jsonData.error.schema).to.include(\"public\");\r",
+							"    pm.expect(jsonData.error.table).to.include(\"usertable\");\r",
+							"    pm.expect(jsonData.error.constraint).to.include(\"usertable_username_key\");\r",
+							"    pm.expect(jsonData.error.file).to.include(\"nbtinsert.c\");\r",
+							"    pm.expect(jsonData.error.line).to.include(\"534\");\r",
+							"    pm.expect(jsonData.error.routine).to.include(\"_bt_check_unique\");\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"// Test property of the response\r",
+							"pm.test(\"Body has error property\", function () {      \r",
+							"    pm.expect(jsonData).to.have.property(\"error\");    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has a description\", function () {\r",
+							"    pm.response.to.have.status(\"Bad Request\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", `w`);\r",
+							"pm.environment.set(\"password\", `a`);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{password}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/user/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
