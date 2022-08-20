@@ -61,7 +61,9 @@ Note: /news page doesn’t display question sometimes. In that case, screen refr
 Bonus questions completed:
 
 •	HTML Reporting, videos & screenshots of tests available.
+
 •	Uploaded test run results from different browser in “Test run reports” folder.
+
 •	Create User “Ray_Hermann28” with more than 4000 points on the leaderboard
 
                                                       API Testing
@@ -74,6 +76,10 @@ Running locally:
 Please make sure you have postman installed.
 
 •	git clone https://github.com/Jothivs/cba-test.git
+
 •	Open postman in your computer. 
+
 •	Import both the collection & environment file found in “COVID-19 The Game API Test” folder.
+
 •	Run the collection by selecting “Run collection” option.
+
