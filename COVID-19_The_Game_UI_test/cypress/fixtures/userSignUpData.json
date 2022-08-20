@@ -1,0 +1,31 @@
+[
+   {
+      "scenario": "Negative scenario: User should not be allowed to create a user account, if all the fields in Sign Up page are filled with a space",
+      "userName": " ",
+      "password": " ",
+      "repeatPassword": " ",
+      "validationMessage": "User already exists"    
+   },
+   {
+      "scenario": "Negative scenario: User should not be allowed to create a user account, if only Password field in Sign Up page is filled with a value",
+      "userName": " ",
+      "password": "aa",
+      "repeatPassword": " ",
+      "validationMessage": "Passwords do not match"    
+   },
+   {
+      "scenario": "Negative scenario: User should not be allowed to create a user account, if only Repeat Password field in Sign Up page is filled with a value",
+      "userName": " ",
+      "password": " ",
+      "repeatPassword": "aa",
+      "validationMessage": "Passwords do not match"    
+   },
+   {
+      "scenario": "Negative scenario: User should not be allowed to create a user account, if an existing user name is entered for User Name field with a different password in Sign Up page is filled",
+      "userName": "aaaaaaaaaa",
+      "password": "yy",
+      "repeatPassword": "yy",
+      "validationMessage": "User already exists"    
+   }
+   
+]
