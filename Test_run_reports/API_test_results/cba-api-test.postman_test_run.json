@@ -1,0 +1,1146 @@
+{
+	"id": "4b92ac90-df24-4cfd-bff4-fa19cdb68588",
+	"name": "cba-api-test",
+	"timestamp": "2022-08-20T03:30:57.995Z",
+	"collection_id": "18292867-a3ba7949-b2f7-4c8b-a10f-271404ce9fc0",
+	"folder_id": 0,
+	"environment_id": "18292867-2e1d30e8-dbe6-44ad-9ec6-c52a185a04d3",
+	"totalPass": 113,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "f5fcd73e-cfc6-42a9-9b4d-de1e0273d2ad",
+			"name": "Generate token: Status 200",
+			"url": "https://supervillain.herokuapp.com/auth/gentoken",
+			"time": 1869,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Data type of the response": true,
+				"Body matches email address to which token was sent": true,
+				"Body has email property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has string": true,
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches email address to which token was sent": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has email property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1869
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Data type of the response": true,
+					"Body matches email address to which token was sent": true,
+					"Body has email property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has string": true,
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "2a3489f7-1045-476d-9613-aa2e50c0bd4c",
+			"name": "Verify token: Status 403",
+			"url": "https://supervillain.herokuapp.com/auth/verifytoken",
+			"time": 244,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 1000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				244
+			],
+			"allTests": [
+				{
+					"Status code is 403": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 1000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "236cd646-6a31-4ca5-8437-d4308e608b36",
+			"name": "Verify token: Status 200",
+			"url": "https://supervillain.herokuapp.com/auth/verifytoken",
+			"time": 637,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has string": true,
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				637
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has string": true,
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "f2e05d18-d73a-4d6e-8d23-f36e5c4f116a",
+			"name": "Generate token: Status 400",
+			"url": "https://supervillain.herokuapp.com/auth/gentoken",
+			"time": 442,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				442
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "28c64408-3204-4a9f-8b83-5443d06a8e54",
+			"name": "User auth login: Status 400",
+			"url": "https://supervillain.herokuapp.com/auth/user/login",
+			"time": 1848,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1848
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "363623e5-9d96-4c5a-8c2a-9ddf203d23ca",
+			"name": "User auth login: Status 200",
+			"url": "https://supervillain.herokuapp.com/auth/user/login",
+			"time": 651,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Data type of the response": true,
+				"Body matches token value": true,
+				"Body has token & expiresIn property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches token value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has token & expiresIn property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				651
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Data type of the response": true,
+					"Body matches token value": true,
+					"Body has token & expiresIn property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "205ef33e-8522-4144-98da-f01fb43fc887",
+			"name": "user leaderboard Add user Status 201",
+			"url": "https://supervillain.herokuapp.com/v1/user",
+			"time": 635,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Data type of the response": true,
+				"Body matches status and message values": true,
+				"Body has email property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true,
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches status and message values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has email property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				635
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Data type of the response": true,
+					"Body matches status and message values": true,
+					"Body has email property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true,
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "e762507b-436d-48eb-b467-0d1fccbe1f22",
+			"name": "Get user by name Status 200",
+			"url": "https://supervillain.herokuapp.com/v1/user/aaaaaaaaaa",
+			"time": 635,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				635
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "72bcf8a1-fdbb-49e8-96ec-42f1b6e5d0aa",
+			"name": "Get user by name Status 400",
+			"url": "https://supervillain.herokuapp.com/v1/user/aaaaaaaaaa",
+			"time": 242,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				242
+			],
+			"allTests": [
+				{
+					"Status code is 403": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "75fc12be-2dc2-42f1-a5fd-86449c92180f",
+			"name": "user leaderboard Update user Status 204",
+			"url": "https://supervillain.herokuapp.com/v1/user",
+			"time": 633,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true,
+				"Response time is less than 40000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 40000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				633
+			],
+			"allTests": [
+				{
+					"Status code is 204": true,
+					"Response time is less than 40000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "d38bc0af-f6ac-4602-8139-c8f07b82db4b",
+			"name": "Delete user Status 401",
+			"url": "https://supervillain.herokuapp.com/v1/user",
+			"time": 233,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				233
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "13a4d8d9-ce2f-48e2-aecb-cd4a8ad26153",
+			"name": "Create user with more than 4000 points Status 201",
+			"url": "https://supervillain.herokuapp.com/v1/user",
+			"time": 1039,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Data type of the response": true,
+				"Body matches status and message values": true,
+				"Body has email property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches status and message values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has email property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1039
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Data type of the response": true,
+					"Body matches status and message values": true,
+					"Body has email property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "2f6272ba-1a15-4c77-a5cc-1d5f0527bd0d",
+			"name": "user leaderboard Update user Status 403",
+			"url": "https://supervillain.herokuapp.com/v1/user",
+			"time": 235,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				235
+			],
+			"allTests": [
+				{
+					"Status code is 403": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "58904d70-f267-4c1d-a2a7-290b62462536",
+			"name": "user leaderboard Add user Status 400",
+			"url": "https://supervillain.herokuapp.com/v1/user",
+			"time": 441,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				441
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "1830fde6-6d09-47ea-9b36-545c0d7f02d5",
+			"name": "Get user: Status 200",
+			"url": "https://supervillain.herokuapp.com/v1/user",
+			"time": 1670,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1670
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "9bce7d89-ac5b-42be-ba50-5f866a8063c4",
+			"name": "Get user: Status 403",
+			"url": "https://supervillain.herokuapp.com/v1/user",
+			"time": 274,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				274
+			],
+			"allTests": [
+				{
+					"Status code is 403": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "16fa2810-1398-4799-80ba-abeed73a19ea",
+			"name": "Register user: Status 200",
+			"url": "https://supervillain.herokuapp.com/auth/user/register",
+			"time": 636,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Response time is less than 3000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				636
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Response time is less than 3000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		},
+		{
+			"id": "0d26a93e-c776-4d5f-9a42-3c0ed3976361",
+			"name": "Register user: Status 400",
+			"url": "https://supervillain.herokuapp.com/auth/user/register",
+			"time": 438,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Data type of the response": true,
+				"Body matches error string": true,
+				"Body has error property": true,
+				"Content-Type is present": true,
+				"Response time is less than 2000ms": true,
+				"Status code name has a description": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data type of the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches error string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 2000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has a description": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				438
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Data type of the response": true,
+					"Body matches error string": true,
+					"Body has error property": true,
+					"Content-Type is present": true,
+					"Response time is less than 2000ms": true,
+					"Status code name has a description": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 12802,
+	"collection": {
+		"requests": [
+			{
+				"id": "f5fcd73e-cfc6-42a9-9b4d-de1e0273d2ad",
+				"method": "POST"
+			},
+			{
+				"id": "2a3489f7-1045-476d-9613-aa2e50c0bd4c",
+				"method": "GET"
+			},
+			{
+				"id": "236cd646-6a31-4ca5-8437-d4308e608b36",
+				"method": "GET"
+			},
+			{
+				"id": "f2e05d18-d73a-4d6e-8d23-f36e5c4f116a",
+				"method": "POST"
+			},
+			{
+				"id": "28c64408-3204-4a9f-8b83-5443d06a8e54",
+				"method": "POST"
+			},
+			{
+				"id": "363623e5-9d96-4c5a-8c2a-9ddf203d23ca",
+				"method": "POST"
+			},
+			{
+				"id": "205ef33e-8522-4144-98da-f01fb43fc887",
+				"method": "POST"
+			},
+			{
+				"id": "e762507b-436d-48eb-b467-0d1fccbe1f22",
+				"method": "GET"
+			},
+			{
+				"id": "72bcf8a1-fdbb-49e8-96ec-42f1b6e5d0aa",
+				"method": "GET"
+			},
+			{
+				"id": "75fc12be-2dc2-42f1-a5fd-86449c92180f",
+				"method": "PUT"
+			},
+			{
+				"id": "d38bc0af-f6ac-4602-8139-c8f07b82db4b",
+				"method": "DELETE"
+			},
+			{
+				"id": "13a4d8d9-ce2f-48e2-aecb-cd4a8ad26153",
+				"method": "PUT"
+			},
+			{
+				"id": "2f6272ba-1a15-4c77-a5cc-1d5f0527bd0d",
+				"method": "PUT"
+			},
+			{
+				"id": "58904d70-f267-4c1d-a2a7-290b62462536",
+				"method": "POST"
+			},
+			{
+				"id": "1830fde6-6d09-47ea-9b36-545c0d7f02d5",
+				"method": "GET"
+			},
+			{
+				"id": "9bce7d89-ac5b-42be-ba50-5f866a8063c4",
+				"method": "GET"
+			},
+			{
+				"id": "16fa2810-1398-4799-80ba-abeed73a19ea",
+				"method": "POST"
+			},
+			{
+				"id": "0d26a93e-c776-4d5f-9a42-3c0ed3976361",
+				"method": "POST"
+			}
+		]
+	}
+}
