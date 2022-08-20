@@ -1,8 +1,8 @@
-                                         CBA Test - UI Test Automation
+                                         #CBA Test - UI Test Automation
                                                       
 Technology used – Javascript, Cypress, Chai assertion library, mocha
 
-Running locally from Command Line:
+##Running locally from Command Line:
 
 Please make sure you have node.js & cypress latest version installed and configured on your system. More information regarding installation of have node.js & cypress can be found here: https://docs.cypress.io/guides/getting-started/installing-cypress#yarn-add
 
@@ -18,7 +18,7 @@ Step - 5: npm run RunCode
 
 Note: After test execution, please look inside /reports/mochawesome-report folder to view the HTML Reports.
 
-                                                     (OR)
+                                                    #(OR)
 
 If wishing to see the execution in an open browser. 
 
@@ -52,13 +52,13 @@ If wishing to see the execution in an open browser.
 		
     o	BattleFieldPage.cy: Testing e2e journey from user creation to leader board by answering all questions.
 		    
-Issues and Bugs:
+##Issues and Bugs:
 
 For issues or bugs please check under issues tab of this Git repository.
 
 Note: /news page doesn’t display question sometimes. In that case, screen refresh is required, to get questions to be displayed.
 
-Bonus questions completed:
+##Bonus questions completed:
 
 •	HTML Reporting, videos & screenshots of tests available.
 
@@ -66,12 +66,12 @@ Bonus questions completed:
 
 •	Create User “Ray_Hermann28” with more than 4000 points on the leaderboard
 
-                                                      API Testing
+                                                      #API Testing
                                                                     
 Technology used – Javascript, Chai assertion library
 Tool used – Postman
 
-Running locally:
+##Running locally:
 
 Please make sure you have postman installed.
 
