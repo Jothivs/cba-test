@@ -1,4 +1,4 @@
-                                                       CBA Test - UI Test Automation
+                                         CBA Test - UI Test Automation
                                                       
 Technology used – Javascript, Cypress, Chai assertion library, mocha
 
@@ -18,7 +18,7 @@ Step - 5: npm run RunCode
 
 Note: After test execution, please look inside /reports/mochawesome-report folder to view the HTML Reports.
 
-                                                                             (OR)
+                                                     (OR)
 
 If wishing to see the execution in an open browser. 
 
@@ -64,7 +64,7 @@ Bonus questions completed:
 •	Uploaded test run results from different browser in “Test run reports” folder.
 •	Create User “Ray_Hermann28” with more than 4000 points on the leaderboard
 
-                                                                            API Testing
+                                                      API Testing
                                                                     
 Technology used – Javascript, Chai assertion library
 Tool used – Postman
